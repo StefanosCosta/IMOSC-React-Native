@@ -8,7 +8,9 @@ import ViewImageScreen from './app/screens/ViewImageScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 
-
+import Card from "./app/components/Card"
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import MessageScreen from './app/screens/MessageScreen';
 
 
 
@@ -23,21 +25,12 @@ export default function App() {
 
   const handlePress =() => console.log("Text Pressed");
   return (
-    <NavigationContainer>
-     <WelcomeScreen />
-     {/* <LoginScreen/> */}
-    </NavigationContainer>
     
-    
-    // <ViewImageScreen />
-    // <View style={styles.container}>
-    //   <View style={{
-    //     backgroundColor: "dodgerblue",
-    //     flex:1,
-    //     }}
-    //   />
-    // </View>
-      
+    //  {/* <WelcomeScreen /> */}
+    //  {/* <LoginScreen/> */}
+    //  <ListingDetailsScreen/>
+    <MessageScreen/>
+
     
   );
 }

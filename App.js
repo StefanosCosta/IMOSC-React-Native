@@ -7,11 +7,11 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
-
+import Screen from './app/components/Screen';
 import Card from "./app/components/Card"
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessageScreen from './app/screens/MessageScreen';
-
+import Icon from './app/components/Icon';
 
 
 export default function App() {
@@ -29,7 +29,15 @@ export default function App() {
     //  {/* <WelcomeScreen /> */}
     //  {/* <LoginScreen/> */}
     //  <ListingDetailsScreen/>
-    <MessageScreen/>
+    // <MessageScreen/>
+    <Screen>
+      <Icon
+      name = "email"
+      size={50}
+      backgroundColor="red"
+      iconColor= "white"
+      />
+    </Screen>
 
     
   );

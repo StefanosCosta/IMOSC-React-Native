@@ -1,115 +1,80 @@
-import React, {useState} from 'react';
-import { View, StyleSheet, StatusBar, Button,TextInput,Image,Text, ImageBackground, TouchableOpacity } from 'react-native';
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from 'react';
+import { View, StyleSheet, Image } from 'react-native';
+import AppTextInput from '../components/AppTextInput';
+import Screen from '../components/Screen';
+import AppButton from '../components/AppButton';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import ErrorMessage from '../components/ErrorMessage';
+import AppFormField from '../components/AppFormField';
 
+const validationSchema = Yup.object().shape(
+    {
+        email : Yup.string().required().email().label("Email"),
+        password : Yup.string().required().min(4).label("Password")
+    }
+)
 
 function LoginScreen(props) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    return (
     
+    return (
+        <Screen style={styles.container}>
+            <Image 
+            source={require("../assets/logo-removedbf.png")} 
+            style={styles.logo}
+            />
+            <Formik
+            initialValues={{
+                email:'', password: ''
+            }}
+            onSubmit={values => console.log(values)}
+            validationSchema={validationSchema}
+            >
+            { ({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
+                <>
+                <AppFormField
+                name="email"
+                icon="email"
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType= "email-address"
+                placeholder= "Email"
+                textContentType="emailAddress"
+                />
+                <AppFormField
+                name="password"
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="lock"
+                placeholder="Password"
+                textContentType="password"
+                secureTextEntry
+                />
 
-        <ImageBackground 
-                style = {styles.background}
-                source={require("../assets/appbackground.jpg")}
-                >   
-    <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/logo-removedbf.png")} />
-        {/* <MaterialCommunityIcons name = "email" color="dodgerblue"/> */}
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email."
-          placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
- 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
- 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
+                <AppButton 
+                title="Login"
+                onPress = {handleSubmit} 
+                />
+            </>
 
-      <TouchableOpacity>
-        <Text style={styles.no_account_button}>Don't Have an Account?</Text>
-      </TouchableOpacity>
-      
- 
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>LOGIN</Text>
-      </TouchableOpacity>
-    </View>
-    </ImageBackground>
+            ) }
 
-
-        
+            </Formik>
+           
+        </Screen>
     );
 }
 
 const styles = StyleSheet.create({
-    background:{
-                flex:1,
-                justifyContent: "flex-end",
-                // alignItems: "center",
-            },
+    logo: {
+        width: 80,
+        height: 80,
+         alignSelf: "center",
+         marginTop: 50,
+         marginBottom: 50,
+    },
     container: {
-      flex: 1,
-    //   backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-   
-    image: {
-      marginBottom: 40,
-    },
-   
-    inputView: {
-      backgroundColor: "#FFC0CB",
-      borderRadius: 30,
-      width: "70%",
-      height: 45,
-      marginBottom: 20,
-   
-      alignItems: "center",
-    },
-   
-    TextInput: {
-      height: 50,
-      flex: 1,
-      padding: 10,
-      marginLeft: 20,
-    },
-   
-    forgot_button: {
-      color: "white",
-      height: 30,
-      marginBottom: 10,
-    },
-    no_account_button: {
-      color: "white",
-      height: 30,
-      marginBottom: 20,
-    },
-   
-    loginBtn: {
-      width: "80%",
-      borderRadius: 25,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#FF1493",
-    },
-  });
-
+        padding: 10
+    }
+})
 export default LoginScreen;

@@ -19,7 +19,7 @@ function WelcomeScreen(props) {
         
         </View>
 
-        <AppButton title="Login" onPress={ () => console.log("tapped")} ></AppButton>
+        {/* <AppButton title="Login" onPress={ () => console.log("tapped")} ></AppButton> */}
         <View style = {styles.buttonView}>
 
         <TouchableOpacity 

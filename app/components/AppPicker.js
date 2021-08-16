@@ -16,12 +16,18 @@ function AppPicker({icon, items, onSelectItem, placeholder, selectedItem}) {
         <React.Fragment>
         <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
-            {icon && <MaterialCommunityIcons 
+            {icon && (<MaterialCommunityIcons 
             name={icon} 
             size={20} 
             colors={defaultStyles.colors.medium} 
-            style={styles.icon} />}
-            <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+            style={styles.icon} />)}
+            {selectedItem ? (<AppText style={styles.text}>{selectedItem.label}</AppText> 
+            )
+            : (<AppText style={styles.placeholder}>{placeholder}</AppText>)}
+            
+            {/* <AppText style={styles.text}>
+                {selectedItem ? selectedItem.label : placeholder}
+            </AppText> */}
             <MaterialCommunityIcons 
             name="chevron-down" 
             size={20} 
@@ -58,6 +64,10 @@ const styles = StyleSheet.create({
         width: "100%",
         padding: 15,
         marginVertical: 10,
+    },
+    placeholder : {
+        color: defaultStyles.colors.medium,
+        flex : 1,
     },
     icon: {
         marginRight: 10,

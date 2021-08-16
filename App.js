@@ -12,7 +12,10 @@ import LoginScreen from './app/screens/LoginScreen';
 import ListingScreen from './app/screens/ListingScreen';
 import AccountScreen from './app/screens/AccountScreen';
 import MessageScreen from './app/screens/MessageScreen';
-import ListingDetailsScreen from 'app/screens/ListingDetailsScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
+
+import ListingEditScreen from './app/screens/ListingEditScreen';
 export default function App() {
   // let x = 1;
   // console.log("App Executed");
@@ -38,12 +41,14 @@ export default function App() {
      
     //  <WelcomeScreen /> 
     //  <Login/> 
-     <ListingDetailsScreen/>
+    //  <ListingDetailsScreen/>
     // <MessageScreen/>
     // <AccountScreen/>
     // <ListingScreen/>
     // <Hello/>
     // <LoginScreen />
+    // <RegisterScreen/>
+    <ListingEditScreen />
     
 
     

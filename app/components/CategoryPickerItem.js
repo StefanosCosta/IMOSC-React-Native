@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     },
     label: {
         marginTop: 5,
-        textAlign: "center"
+        textAlign: "center",
+        fontSize: 15
     }
 })
 

@@ -10,8 +10,8 @@ import colors from '../config/colors';
 const initialMessages = [
     {
         id:1,
-        title: 'T1',
-        description: 'D1',
+        title: 'Amazing pair of shoes that is amazing very much so and very good',
+        description: 'This is an a amazing pair of shoes that everyone will like and weveryone will enjoy with love and affection and all in this section bopppity boupity boo',
         image: require('../assets/nikeshoes.jpeg')
     },
     {

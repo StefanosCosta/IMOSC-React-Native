@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dimensions,StyleSheet, Text, View,Image, TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, Button, Alert, Platform } from 'react-native';
 import Screen from './app/components/Screen';
 import Login from './app/screens/Login';
@@ -18,6 +18,11 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import AppFormPicker from './app/components/forms/AppFormPicker';
 import { AppForm } from './app/components/forms';
+import * as ImagePicker from 'expo-image-picker';
+import AppButton from './app/components/AppButton';
+// import { select } from 'async';
+
+
 export default function App() {
   // let x = 1;
   // console.log("App Executed");
@@ -38,13 +43,35 @@ export default function App() {
   // ];
   // const [category,setCategory] =useState(categories[0]);
 
-const categories = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Camera", value: 3 },
-];
-  return (
+// const categories = [
+//   { label: "Furniture", value: 1 },
+//   { label: "Clothing", value: 2 },
+//   { label: "Camera", value: 3 },
+// ];
+  const [imageUri,setImageUri] = useState();
 
+  // const requestPermission = async () => {
+  //   const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
+  //   if (!result.granted)
+  //   alert("You need to enable permission to access the library")
+  // }
+  const selectImage= async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if(!result.cancelled)
+        setImageUri(result.uri)
+    } catch (error) {
+      console.log("Error loading image",error)
+    }
+  }
+  // useEffect( () => {
+  //   requestPermission();
+  // }, [] )
+  return (
+    <Screen>
+      <AppButton title="Select Image" onPress={selectImage}></AppButton>
+      <Image source={{uri : imageUri}} style={{ width:200, height:200}}/>
+    </Screen>
      
     //  <WelcomeScreen /> 
     //  <Login/> 
@@ -55,7 +82,7 @@ const categories = [
     // <Hello/>
     // <LoginScreen />
     // <RegisterScreen/>
-    <ListingEditScreen />
+    // <ListingEditScreen />
     // <Screen>
     //   <AppForm
     //   initialValues={{

@@ -21,6 +21,7 @@ function AppPicker({icon, items,numberOfColumns=1, onSelectItem,PickerItemCompon
             size={20} 
             colors={defaultStyles.colors.medium} 
             style={styles.icon} />)}
+            
             {selectedItem ? (<AppText style={styles.text}>{selectedItem.label}</AppText> 
             )
             : (<AppText style={styles.placeholder}>{placeholder}</AppText>)}
